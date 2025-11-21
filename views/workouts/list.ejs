@@ -1,0 +1,38 @@
+<%- include("../layout") %>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>All Workouts</h2>
+    <a href="/workouts/create" class="btn btn-success">Add New Workout</a>
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Duration (min)</th>
+            <th>Difficulty</th>
+            <th>Date</th>
+            <th style="width: 180px">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% workouts.forEach(workout => { %>
+        <tr>
+            <td><%= workout.name %></td>
+            <td><%= workout.duration %></td>
+            <td><%= workout.difficulty %></td>
+            <td><%= workout.date.toDateString() %></td>
+
+            <td>
+                <a href="/workouts/edit/<%= workout._id %>" class="btn btn-warning btn-sm">Edit</a>
+                <a href="/workouts/delete/<%= workout._id %>" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+</div>
+</body>
+</html>
